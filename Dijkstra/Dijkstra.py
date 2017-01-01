@@ -11,6 +11,7 @@ output : start node에서 부터 각 노드에 가는데 필요한 최소경로�
 def dijstra(graph = [[0,2,3,inf,inf],[inf, 0, 4, 5, inf],[inf, inf, 0, 6, inf], [inf, inf, inf, 0, inf], [1, inf, inf, inf, 0]], start = 0):
     n = len(graph) #n은 node의 갯수
     res = [inf]*n #result list 초깃값은 infinite로 지정
+    prev = [None]*n
     res[start] = 0
     Q = []
     def get_min(Q, res):
@@ -31,9 +32,11 @@ def dijstra(graph = [[0,2,3,inf,inf],[inf, 0, 4, 5, inf],[inf, inf, 0, 6, inf], 
             if i in Q and graph[start][i]!=inf:
                 if res[i]>res[start]+graph[start][i]:
                     res[i] = res[start]+graph[start][i]
+                    prev[i] = start
         start = get_min(Q, res)
         if len(Q)==0 or start==None:
             break
-    return res
+    return res, prev
 
 print(dijstra())
+print(dijstra([[0,2,3,1,10],[inf, 0, inf, 2, inf],[inf, inf, 0, 1, 1],[inf, inf, inf, 0, 3],[inf, inf, inf, inf, inf]],0))
