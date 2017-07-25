@@ -139,7 +139,7 @@ bool comp(const plan& a, const plan& b)
 		return false;
 }
 
-int main()
+int sol_1931()
 {
 	plan t;
 	int n, i, s, e;
@@ -169,3 +169,8 @@ int main()
 	printf("%d\n", cnt);
 	return 0;
 }
+/*
+int main()
+{
+	sol_1931();
+}*/
