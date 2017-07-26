@@ -68,43 +68,49 @@ int main()
 	}
 	else
 	{
-		for (i = 0; i < n - 2; i++)
+		bool flag=false;
+		if (arr[0] == arr[1])
 		{
-			if (arr[i] == arr[i + 1])
+			for (i = 2; i < n; i++)
 			{
-				cura = -999999;
-				curb = -999999;
+				if (arr[i] != arr[0])
+					flag = true;
 			}
+
+			if (flag)
+				printf("B\n");
 			else
-			{
-				cura = (arr[i + 1] - arr[i + 2]) / (arr[i] - arr[i + 1]);
-				curb = arr[i + 1] - cura*arr[i];
-			}
-			if (i == 0)
-			{
-				a = cura;
-				b = curb;
-			}
-			else
-			{
-				if (a != cura || b != curb)
-				{
-					if (cura == -999999 && a == 0)
-					{
-						continue;
-					}
-					printf("B\n");
-					return 0;
-				}
-			}
-		}
-		if (a == -999999 && b == -999999)
-		{
-			printf("%d\n", arr[0]);
+				printf("%d\n", arr[0]);
 		}
 		else
 		{
-			printf("%d\n", a*arr[n - 1] + b);
+			if (arr[1] == arr[2])
+			{
+				a = 0;
+				b = arr[1];
+			}
+			else
+			{
+				if ((arr[1] - arr[2]) % (arr[0] - arr[1]) != 0)
+					flag = true;
+				else
+				{
+					a = (arr[1] - arr[2]) / (arr[0] - arr[1]);
+					b = arr[1] - a*arr[0];
+				}
+			}
+			if (flag == false)
+			{
+				for (i = 3; i < n; i++)
+				{
+					if (arr[i] != arr[i - 1] * a + b)
+						flag = true;
+				}
+			}
+			if (flag)
+				printf("B\n");
+			else
+				printf("%d\n", a*arr[n - 1] + b);
 		}
 	}
 	return 0;
