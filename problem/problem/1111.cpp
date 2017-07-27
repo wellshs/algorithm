@@ -46,9 +46,9 @@ A
 
 #include <stdio.h>
 
-int arr[50];
-int main()
+int sol_1111()
 {
+	int arr[50];
 	int i, n, a, b, cura, curb;
 	scanf("%d", &n);
 	for (i = 0; i < n; i++)
@@ -115,3 +115,10 @@ int main()
 	}
 	return 0;
 }
+/*
+int main()
+{
+	sol_1111();
+	return 0;
+}
+*/

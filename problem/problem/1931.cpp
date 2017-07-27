@@ -119,13 +119,13 @@ algorithm의 sort는 기본적으로 qsort로 nlogn을 보장해준다.
 
 using namespace std;
 
-struct plan
+static struct plan
 {
 	int start;
 	int end;
 };
 
-vector<plan> input;
+static vector<plan> input;
 
 bool comp(const plan& a, const plan& b)
 {
